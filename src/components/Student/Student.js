@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
+
+
 
 export default class Student extends Component {
   constructor() {
@@ -10,10 +13,12 @@ export default class Student extends Component {
     };
   }
 
+  
+
   componentDidMount() {
     return axios
-      .get(`http://localhost:3005/students/${this.props.match.params.id}`
-      ).then(results => {
+      .get(`http://localhost:3005/students/${this.props.match.params.id}`)
+      .then(results => {
         this.setState({
           studentInfo: results.data
         });
@@ -21,6 +26,7 @@ export default class Student extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="box">
         <h1>Student:</h1>
@@ -29,6 +35,17 @@ export default class Student extends Component {
         </h1>
         <h3>Grade: {this.state.studentInfo.grade}</h3>
         <h3>Email: {this.state.studentInfo.email}</h3>
+    
+     
+        <button onClick={()=>this.props.history.goBack()}>Back</button>
+       
+         
+
+       
+       
+        
+          
+       
       </div>
     );
   }

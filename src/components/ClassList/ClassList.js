@@ -31,12 +31,18 @@ export default class ClassList extends Component {
         </h3>
       </Link>
     ));
-
+    
     return (
       <div className="box">
         <h1>{this.props.match.params.class}</h1>
         <h2>ClassList:</h2>
-        {students}
+          {students}
+    
+      
+        <button onClick={()=>this.props.history.push('/')} >Back</button>
+      
+      
+       
       </div>
     );
   }
